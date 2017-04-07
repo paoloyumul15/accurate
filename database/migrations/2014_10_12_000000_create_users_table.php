@@ -17,15 +17,12 @@ class CreateUsersTable extends Migration
             $table->engine = 'InnoDB';
 
             $table->increments('id');
-            $table->string('company_id', 25)->nullable()->default(null);
+            $table->string('company_id', 25)->default(null)->nullable();
             $table->string('name');
             $table->string('email', 100)->unique();
             $table->string('password');
             $table->rememberToken();
             $table->timestamps();
-
-            $table->foreign('company_id')->references('id')->on('companies')
-                ->onUpdate('cascade');
         });
     }
 

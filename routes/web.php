@@ -11,6 +11,16 @@
 |
 */
 
+Route::group(['domain' => 'app.accurate' . env('APP_TLD')], function () {
+    Route::get('/', function () {
+        return view('app');
+    });
+
+    Route::get('{any?}', function () {
+        return view('app');
+    })->where('any', '.*');
+});
+
 Route::get('/', function () {
     return view('welcome');
 });
