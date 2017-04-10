@@ -19,8 +19,17 @@ Route::group(['domain' => 'app.accurate' . env('APP_TLD')], function () {
     Route::get('{any?}', function () {
         return view('app');
     })->where('any', '.*');
+
+
+    Route::group(['prefix' => 'api'], function () {
+        Route::post('chart-of-accounts', 'ChartOfAccountController@store');
+    });
 });
 
 Route::get('/', function () {
     return view('welcome');
 });
+
+Auth::routes();
+
+Route::get('/home', 'HomeController@index');

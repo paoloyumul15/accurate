@@ -2,6 +2,8 @@
 
 namespace App\Providers;
 
+use App\Models\ChartOfAccount;
+use App\Observers\ChartOfAccountObserver;
 use Barryvdh\LaravelIdeHelper\IdeHelperServiceProvider;
 use Illuminate\Support\ServiceProvider;
 
@@ -14,7 +16,7 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot()
     {
-        //
+        ChartOfAccount::observe(ChartOfAccountObserver::class);
     }
 
     /**

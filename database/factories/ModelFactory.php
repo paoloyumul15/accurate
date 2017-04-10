@@ -19,7 +19,7 @@ $factory->define(App\User::class, function (Faker\Generator $faker) {
 });
 
 $factory->define(App\Models\Company::class, function (Faker\Generator $fake) {
-    $id = date('Y-m') . '-' . $fake->randomNumber(6);
+    $id = str_replace('-', '', date('Y-m') . '-' . $fake->randomNumber(6));
 
     return [
         'id' => $id,
@@ -30,5 +30,17 @@ $factory->define(App\Models\Company::class, function (Faker\Generator $fake) {
         'max_size' => 5,
         'created_at' => date('Y-m-d'),
         'updated_at' => date('Y-m-d'),
+    ];
+});
+
+$factory->define(App\Models\ChartOfAccount::class, function (Faker\Generator $fake) {
+    $company = $fake->company;
+    $id = $company . '-' . $fake->numberBetween(10000, 999999);
+
+    return [
+        'id' => $id,
+        'company_id' => $company,
+        'description' => $fake->word,
+        'type_code' => $fake->randomKey(config('accurate.accountTypes')),
     ];
 });
