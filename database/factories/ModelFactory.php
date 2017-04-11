@@ -34,8 +34,8 @@ $factory->define(App\Models\Company::class, function (Faker\Generator $fake) {
 });
 
 $factory->define(App\Models\ChartOfAccount::class, function (Faker\Generator $fake) {
-    $company = $fake->company;
-    $id = $company . '-' . $fake->numberBetween(10000, 999999);
+    $company = str_replace('-', '', date('Y-m') . '-' . $fake->randomNumber(6));
+    $id = $fake->numberBetween(10000, 999999);
 
     return [
         'id' => $id,

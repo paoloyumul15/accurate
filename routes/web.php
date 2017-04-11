@@ -12,6 +12,13 @@
 */
 
 Route::group(['domain' => 'app.accurate' . env('APP_TLD')], function () {
+    Route::group(['prefix' => 'api'], function () {
+        Route::delete('chart-of-accounts/{chartOfAccount}', 'ChartOfAccountController@destroy');
+        Route::get('chart-of-accounts', 'ChartOfAccountController@index');
+        Route::patch('chart-of-accounts/{chartOfAccount}', 'ChartOfAccountController@update');
+        Route::post('chart-of-accounts', 'ChartOfAccountController@store');
+    });
+
     Route::get('/', function () {
         return view('app');
     });
@@ -19,11 +26,6 @@ Route::group(['domain' => 'app.accurate' . env('APP_TLD')], function () {
     Route::get('{any?}', function () {
         return view('app');
     })->where('any', '.*');
-
-
-    Route::group(['prefix' => 'api'], function () {
-        Route::post('chart-of-accounts', 'ChartOfAccountController@store');
-    });
 });
 
 Route::get('/', function () {
