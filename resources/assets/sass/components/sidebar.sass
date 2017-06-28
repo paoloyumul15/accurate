@@ -1,25 +1,48 @@
+@import "_variables"
+
 .Sidebar
     position: absolute
     top: 50px
     left: 0
     width: 230px
-    background: $dark-blue
+    background: $light-gray
     height: calc(100% - 50px)
 
 .Sidebar__category
     text-transform: uppercase
-    color: $white
+    color: $dark-gray
     font-size: 11px
-    background: darken($dark-blue, 2%)
-    padding: 5px
+    background: $light-gray
+    padding: 5px 5px 5px 15px
     margin: 0
 
 .Sidebar__menu
     list-style: none
-    padding-left: 0
+    padding-left: 20px
 
     li
         margin-top: 3px
         margin-bottom: 3px
         padding: 10px 0
 
+        &:hover
+            cursor: pointer
+
+            a,
+            i
+                color: $highlight
+        a
+            color: darken($dark-gray, 25%)
+            font-size: 13px
+
+            &:hover,
+            &:focus
+                text-decoration: none
+
+            i
+                color: $dark-gray
+    
+    li.is-active
+        a,
+        i
+            color: $highlight

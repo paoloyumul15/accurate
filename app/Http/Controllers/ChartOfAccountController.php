@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\ChartOfAccount;
 
-class ChartOfAccountController extends Controller
+class ChartOfAccountController extends ApiController
 {
     public function index()
     {

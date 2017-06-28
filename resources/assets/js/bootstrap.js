@@ -16,6 +16,8 @@ window.axios.defaults.headers.common = {
     'X-Requested-With': 'XMLHttpRequest'
 };
 
+Vue.prototype.$http = window.axios;
+
 
 // import Echo from 'laravel-echo'
 

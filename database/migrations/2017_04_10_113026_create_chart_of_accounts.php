@@ -20,6 +20,8 @@ class CreateChartOfAccounts extends Migration
             $table->string('company_id', 25);
             $table->string('description', 100);
             $table->enum('type_code', array_keys(config('accurate.accountTypes')));
+            $table->timestamps();
+            $table->softDeletes();
 
             $table->primary('id');
             $table->foreign('company_id')->references('id')->on('companies')

@@ -20,5 +20,6 @@
         @yield('content')
     </div>
     <script src="{{ asset('js/app.js') }}"></script>
+    <input type="hidden" class="is-active">
 </body>
 </html>

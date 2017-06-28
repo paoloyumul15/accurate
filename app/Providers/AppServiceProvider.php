@@ -5,6 +5,7 @@ namespace App\Providers;
 use App\Models\ChartOfAccount;
 use App\Observers\ChartOfAccountObserver;
 use Barryvdh\LaravelIdeHelper\IdeHelperServiceProvider;
+use Barryvdh\Debugbar\ServiceProvider as DebugbarServiceProvider;
 use Illuminate\Support\ServiceProvider;
 
 class AppServiceProvider extends ServiceProvider
@@ -28,6 +29,7 @@ class AppServiceProvider extends ServiceProvider
     {
         if ($this->app->environment() !== 'production') {
             $this->app->register(IdeHelperServiceProvider::class);
+            $this->app->register(DebugbarServiceProvider::class);
         }
     }
 }

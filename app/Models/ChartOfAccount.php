@@ -3,18 +3,18 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
-use function strpos;
+use Illuminate\Database\Eloquent\SoftDeletes;
 
 class ChartOfAccount extends Model
 {
+    use SoftDeletes;
+
     protected $fillable = [
         'id',
         'company_id',
         'description',
         'type_code',
     ];
-
-    public $timestamps = false;
 
     public $incrementing = false;
 
